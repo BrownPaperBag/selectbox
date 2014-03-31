@@ -1,0 +1,20 @@
+{
+  "name": "selectbox",
+  "version": "0.0.1",
+  "description": "A directive providing a dropdown menu which is easy to style but somes with no default styling of its own",
+  "main": "directives/selectbox.js",
+  "keywords": [
+    "Require",
+    "Model",
+    "AngularJS"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/BrownPaperBag/selectbox",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
