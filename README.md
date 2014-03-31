@@ -7,4 +7,4 @@ Example usage:
 
 &lt;script src="bower_components/selectbox/directives/selectbox.js"&gt;&lt;/script&gt;
 
-&lt;selectbox model="item.order_reason" options="reasons"&gt;&lt;/selectbox&gt;
+&lt;selectbox model="chosen_item" options="items"&gt;&lt;/selectbox&gt;
