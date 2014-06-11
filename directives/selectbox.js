@@ -4,7 +4,7 @@ angular.module('selectbox', [])
             restrict: 'E',
             scope: {
                 options: '=',
-                model: '='
+                ngModel: '=model',
             },
             template:
                 '<div class="selectbox">' +
@@ -12,7 +12,7 @@ angular.module('selectbox', [])
                 '    <div class="selectbox-value" ng-click="selecting=!selecting">{{options[model]}}</div>' +
                 '    <div class="selectbox-options" ng-show="selecting">' +
                 '        <div class="selectbox-option" ng-repeat="(code, description) in options"' +
-                '            ng-click="$parent.model=code; $parent.selecting=0">{{description}}</div>' +
+                '            ng-click="$parent.model=code; $parent.selecting=0; valueChanged()">{{description}}</div>' +
                 '    </div>' +
                 '</div>'
         }
