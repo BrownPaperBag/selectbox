@@ -5,6 +5,8 @@ An angularjs directive providing a dropdown menu which is easy to style but some
 
 Example usage:
 
-&lt;script src="bower_components/selectbox/directives/selectbox.js"&gt;&lt;/script&gt;
+```HTML
+<script src="bower_components/selectbox/directives/selectbox.js"></script>
 
-&lt;selectbox model="item.order_reason" options="reasons"&gt;&lt;/selectbox&gt;
+<selectbox model="chosen_item" options="items"></selectbox>
+```
