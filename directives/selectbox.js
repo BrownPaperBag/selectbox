@@ -62,7 +62,7 @@ angular.module('selectbox', [])
             replace : true,
             restrict: 'E',
             scope: {
-                options: '='
+                options: '=',
                 width: '='
             },
             template:
