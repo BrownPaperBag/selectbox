@@ -1,4 +1,5 @@
 angular.module('selectbox', [])
+
     .directive('selectbox', function () {
         return {
             replace : true,
@@ -63,12 +64,12 @@ angular.module('selectbox', [])
             restrict: 'E',
             scope: {
                 options: '=',
-                width: '='
+                width: '=',
             },
             template:
-                '<div class="selectbox" ng-style="style.main">' +
+                '<div class="selectbox ng-class: {\'disabled\': _disabled}" ng-style="style.main">' +
                 '    <div style="position:fixed; top: 0; bottom: 0; left: 0; right: 0" class="selectbox-overlay" ng-show="selecting" ng-click="selecting=0"></div>' +
-                '    <div class="selectbox-value ng-class: {placeholder: !lookup[val]}" ng-click="selecting=!selecting">{{lookup[val] || placeholder}}</div>' +
+                '    <div class="selectbox-value ng-class: {placeholder: !lookup[val]}" ng-click="selecting=!_disabled && !selecting">{{lookup[val] || placeholder}}</div>' +
                 '    <div class="selectbox-options" ng-show="selecting" ng-style="style.options">' +
                 '        <div class="selectbox-option" ng-repeat="option in options"' +
                 '            ng-click="$parent.selecting=0; changed(option.code, $event)">{{option.description}}</div>' +
@@ -96,6 +97,7 @@ angular.module('selectbox', [])
 
                 $scope.$parent.$watch($attributes.value, function(newValue, oldValue){
                     $scope.val = $scope.$parent.$eval($attributes.value);
+                    $scope._disabled = $scope.$parent.$eval($attributes.disabled || 'false');
                 });
 
 
@@ -114,4 +116,6 @@ angular.module('selectbox', [])
 
         }
 
-    });
+    })
+
+    ;
