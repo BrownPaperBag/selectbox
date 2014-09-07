@@ -17,21 +17,21 @@ angular.module('selectbox', [])
                 '            ng-click="$parent.model=option.code; $parent.selecting=0">{{option.description}}</div>' +
                 '    </div>' +
                 '</div>',
-            link : function($scope, $element, $attributes){
+            link : function($scope, $element, $attributes) {
                 $scope.placeholder = $attributes.placeholder;
                 $scope.style = {
                     main : {},
                     options : {}
                 };
-                $scope.$watch('model', function(newValue, oldValue){
-                    if(newValue != oldValue){
+                $scope.$watch('model', function(newValue, oldValue) {
+                    if (newValue != oldValue) {
                         $scope.$parent.$eval($attributes.onChange);
                     }
                 });
-                $scope.$watchCollection('options', function(newValue, oldValue){
+                $scope.$watchCollection('options', function(newValue, oldValue) {
                     $scope.lookup = createLookup($scope.options, 'code', 'description');
                 });
-                if($scope.width){
+                if ($scope.width) {
                     $scope.style.main.width = $scope.width + 'px';
                     $scope.style.options.width = $scope.width + 'px';
                 }
@@ -55,7 +55,7 @@ angular.module('selectbox', [])
                 '            ng-click="$parent.selecting=0; changed(option.code, $event)">{{option.description}}</div>' +
                 '    </div>' +
                 '</div>',
-            link : function($scope, $element, $attributes){
+            link : function($scope, $element, $attributes) {
                 $scope.placeholder = $attributes.placeholder;
                 $scope.style = {
                     main : {},
@@ -67,15 +67,15 @@ angular.module('selectbox', [])
                     $subScope.$event = $event;
                     $subScope.$eval($attributes.onChange);
                 };
-                $scope.$parent.$watch($attributes.value, function(newValue, oldValue){
+                $scope.$parent.$watch($attributes.value, function(newValue, oldValue) {
                     $scope.val = $scope.$parent.$eval($attributes.value);
                     $scope._disabled = $scope.$parent.$eval($attributes.disabled || 'false');
                 });
 
-                $scope.$watchCollection('options', function(newValue, oldValue){
+                $scope.$watchCollection('options', function(newValue, oldValue) {
                     $scope.lookup = createLookup($scope.options, 'code', 'description');
                 });
-                if($scope.width){
+                if ($scope.width) {
                     $scope.style.main.width = $scope.width + 'px';
                     $scope.style.options.width = $scope.width + 'px';
                 }
