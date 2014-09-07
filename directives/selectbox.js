@@ -18,6 +18,7 @@ angular.module('selectbox', [])
                 '    </div>' +
                 '</div>',
             link : function($scope, $element, $attributes) {
+                $scope.inited = false;
                 $scope.placeholder = $attributes.placeholder;
                 $scope.style = {
                     main : {},
@@ -25,11 +26,20 @@ angular.module('selectbox', [])
                 };
                 $scope.$watch('model', function(newValue, oldValue) {
                     if (newValue != oldValue) {
-                        $scope.$parent.$eval($attributes.onChange);
+                        if (!$scope.inited || typeof oldValue != 'undefined') {
+                            $scope.inited = true;
+                            if ($attributes.onInit)
+                                $scope.$parent.$eval($attributes.onInit);
+                        } else {
+                            if ($attributes.onChange)
+                                $scope.$parent.$eval($attributes.onChange);
+                        }
                     }
                 });
                 $scope.$watchCollection('options', function(newValue, oldValue) {
-                    $scope.lookup = createLookup($scope.options, 'code', 'description');
+                    if (typeof $scope.options != 'undefined') {
+                        $scope.lookup = createLookup($scope.options, 'code', 'description');
+                    }
                 });
                 if ($scope.width) {
                     $scope.style.main.width = $scope.width + 'px';
