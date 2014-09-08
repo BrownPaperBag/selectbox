@@ -26,10 +26,9 @@ angular.module('selectbox', [])
                 };
                 $scope.$watch('model', function(newValue, oldValue) {
                     if (newValue != oldValue) {
-                        if (!$scope.inited) {
+                        if ($attributes.onInit !== undefined && !$scope.inited) {
                             $scope.inited = true;
-                            if ($attributes.onInit)
-                                $scope.$parent.$eval($attributes.onInit);
+                            $scope.$parent.$eval($attributes.onInit);
                         } else {
                             if ($attributes.onChange)
                                 $scope.$parent.$eval($attributes.onChange);
